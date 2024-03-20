@@ -1,5 +1,5 @@
 # voiture2A-ros
-
+L'architecture empreintée est un seul package pour tous les nodes
 ## Node architecture
 
 ### Camera node
