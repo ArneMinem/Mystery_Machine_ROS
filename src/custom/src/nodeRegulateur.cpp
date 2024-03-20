@@ -2,7 +2,7 @@
 // Created by matti on 20/03/2024.
 //
 
-#include "../include/nodeRegulateur.h"
+#include "../include/custom/nodeRegulateur.h"
 
 nodeRegulateur::nodeRegulateur() : Node("nodeRegulateur") {
 
