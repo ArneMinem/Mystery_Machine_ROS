@@ -67,6 +67,15 @@ class nodeRegulateur : public rclcpp::Node {
      */
     void createCommandTwist(void);
 
+private:
+    rclcpp::TimerBase::SharedPtr timerSendCmd_; // objet timer
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr publisherSendCmd_; // objet publisher
+
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr subscriberReceiveRealPosition; // Objet subscription
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr subscriberReceiveTargetPosition; // Objet subscription
+    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr subscriberReceiveStateBool; // Objet subscription
+    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr subscriberReceiveManualBool; // Objet subscription
+
 };
 
 

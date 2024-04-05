@@ -7,16 +7,16 @@
 
 nodeRegulateur::nodeRegulateur() : Node("nodeRegulateur") {
     // Timer
-    auto this->timerSendCmd_ = this->create_wall_timer(100ms, std::bind(&nodeRegulateur::timerSendCmd, this)); // Timer d'envoie de la commande aux actionneurs
+    this->timerSendCmd_ = this->create_wall_timer(100ms, std::bind(&nodeRegulateur::timerSendCmd, this)); // Timer d'envoie de la commande aux actionneurs
 
     // Publisher
-    auto this->publisherSendCmd_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd", 10);
+    this->publisherSendCmd_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd", 10);
 
     // Subscriber
-    auto this->subscriberReceiveRealPosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("realPosition", 10, std::bind(&nodeRegulateur::callbackSubscriptionReceiveRealPosition, this, _1)); // Subscriber reçoit la position du robot
-    auto this->subscriberReceiveTargetPosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("targetPosition", 10, std::bind(&nodeRegulateur::callbackSubscriptionReceiveTargetPosition, this, _1));// Subscriber reçoit la position cible
-    auto this->subscriberReceiveStateBool = this->create_subscription<std_msgs::msg::Bool>("stateBool", 10, std::bind(&nodeRegulateur::callbackSubscriptionReceiveStateBool, this, _1)); // Subscriber reçoit de la part du node Mission si il doit s'activer
-    auto this->subscriberReceiveManualBool = this->create_subscription<std_msgs::msg::Bool>("manualBool", 10, std::bind(&nodeRegulateur::callbackSubscriptionReceiveManualBool, this, _1)); // Subscriber reçoit de la part du node Client si il doit s'activer
+    this->subscriberReceiveRealPosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("realPosition", 10, std::bind(&nodeRegulateur::callbackSubscriptionReceiveRealPosition, this, _1)); // Subscriber reçoit la position du robot
+    this->subscriberReceiveTargetPosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("targetPosition", 10, std::bind(&nodeRegulateur::callbackSubscriptionReceiveTargetPosition, this, _1));// Subscriber reçoit la position cible
+    this->subscriberReceiveStateBool = this->create_subscription<std_msgs::msg::Bool>("stateBool", 10, std::bind(&nodeRegulateur::callbackSubscriptionReceiveStateBool, this, _1)); // Subscriber reçoit de la part du node Mission si il doit s'activer
+    this->subscriberReceiveManualBool = this->create_subscription<std_msgs::msg::Bool>("manualBool", 10, std::bind(&nodeRegulateur::callbackSubscriptionReceiveManualBool, this, _1)); // Subscriber reçoit de la part du node Client si il doit s'activer
 }
 
 void nodeRegulateur::callbackSubscriptionReceiveRealPosition(const geometry_msgs::msg::PoseStamped &realPosition_msg){
@@ -55,8 +55,8 @@ void nodeRegulateur::timerSendCmd(){
 
     if (not (this->lastManualBool)){
 
-        this.cmdTwist_msg.linear.x = 0; // Vitesse d'avance
-        this.cmdTwist_msg.angular.z = 0; // Vitesse de rotation
+        this->cmdTwist_msg.linear.x = 0; // Vitesse d'avance
+        this->cmdTwist_msg.angular.z = 0; // Vitesse de rotation
 
         if (this->lastStateBool){
             this->createCommandTwist();
@@ -66,14 +66,14 @@ void nodeRegulateur::timerSendCmd(){
 }
 
 void nodeRegulateur::createCommandTwist(void){
-    double dx = this.target_x - this.real_x  # vecteur position du dd_boat vers objectif sur x
-    double dy = this.target_y - this.real_y  # vecteur position du dd_boat vers objectif sur y
-    double distance = sqrt(pow(dx,2) + pow(dy, 2))  # calcul distance
-    dx = (this.target_x  -  this.real_x)/(distance+0.01)  # vecteur position du dd_boat vers objectif sur x
-    dy = (this.target_y - this.real_y)/(distance+0.01)  # vecteur position du dd_boat vers objectif sur y
+    double dx = this.target_x - this.real_x
+    double dy = this.target_y - this.real_y
+    double distance = sqrt(pow(dx,2) + pow(dy, 2))
+    dx = (this->target_x  -  this->real_x)/(distance+0.01)
+    dy = (this->target_y - this->real_y)/(distance+0.01)
 
     double ecartCap = np.sin(this->real_psi - this->target_psi)
 
-    this.cmdTwist_msg.angular.z = 200/M_PI * ecartCap  // Vitesse de rotation
-    this.cmdTwist_msg.linear.x = 400 * 2/M_PI * arctan(0.0726*distance)  // Vitesse d'avance'
+    this->cmdTwist_msg.angular.z = 200/M_PI * ecartCap  // Vitesse de rotation
+    this->cmdTwist_msg.linear.x = 400 * 2/M_PI * arctan(0.0726*distance)  // Vitesse d'avance'
 }
