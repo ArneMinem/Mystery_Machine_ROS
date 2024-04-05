@@ -5,6 +5,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -16,6 +17,18 @@ find_package(tf2_ros REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
 
+
+install(DIRECTORY include/
+  DESTINATION include
+)
+
+include_directories(
+  include
+  ${rclcpp_INCLUDE_DIRS}
+)
+
+add_executable(nodemission src/nodeMission.cpp)
+target_link_libraries(nodemission "${cpp_typesupport_target}")
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
