@@ -73,7 +73,7 @@ ament_target_dependencies(nodeKalman
         # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         # $<INSTALL_INTERFACE:include>)
 
-target_link_libraries(nodeKalman "${cpp_typesupport_target}")
+target_link_libraries(nodeKalman "${cpp_typesupport_target}" proj)
 target_include_directories(nodeKalman PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
@@ -95,9 +95,6 @@ if(BUILD_TESTING)
     ament_lint_auto_find_test_dependencies()
 endif()
 
-
-
-
 # install(TARGETS nodeMission
         # DESTINATION lib/${PROJECT_NAME})
 
@@ -112,3 +109,4 @@ install(TARGETS nodeKalman
         # DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
+
