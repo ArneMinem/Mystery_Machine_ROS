@@ -21,7 +21,7 @@ https://fr.overleaf.com/9866661758nfpjsjcrcqnp#e54566
 ## Teams
 https://teams.microsoft.com/_?culture=fr-fr&country=fr#/school/FileBrowserTabApp/G%C3%A9n%C3%A9ral?threadId=19:4if7g6Iue2ZQTwf5h9PbC7U7gJQ7TYtp8hfr5uuxIJc1@thread.tacv2&ctx=channel
 
-# Planning des séances
+# Déroulement des séances
 
 ## Séance 1 - 22/02/2024
 
