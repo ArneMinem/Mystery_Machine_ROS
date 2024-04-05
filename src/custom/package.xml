@@ -17,6 +17,8 @@
   <depend>tf2_ros</depend>
   <depend>visualization_msgs</depend>
   <depend>std_srvs</depend>
+  <depend>gpsd_client</depend>
+  <depend>icm20948_driver</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
