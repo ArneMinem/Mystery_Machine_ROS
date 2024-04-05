@@ -26,6 +26,8 @@
 #include "gpsd_client/msg/gps_fix.hpp"
 #include "icm20948_driver/msg/rpy.hpp"
 
+#include <proj.h>
+
 // Attention à bien inclure chaque type de message !
 
 using namespace std::chrono_literals;
@@ -48,11 +50,22 @@ public:
 private:
     void timer_callback();
 
+    bool gps_data_received_ = false;
+    bool rpy_data_received_ = false;
+
+    double latitude_;
+    double longitude_;
+
+    double roll_;
+    double pitch_;
+    double yaw_;
+
     rclcpp::TimerBase::SharedPtr timer_;
 
     rclcpp::Subscription<gpsd_client::msg::GpsFix>::SharedPtr subscription_gps_;
     rclcpp::Subscription<icm20948_driver::msg::RPY>::SharedPtr subscription_rpy_;
 
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr publisher_pose_;
+};
 
 #endif

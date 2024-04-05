@@ -15,6 +15,8 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
+find_package(gpsd_client REQUIRED)
+find_package(icm20948_driver REQUIRED)
 
 
 # BoatSimulated
@@ -25,7 +27,7 @@ add_executable(nodeKalman src/nodeKalman.cpp
 add_executable(nodeRegulateur src/nodeRegulateur.cpp
         include/custom/nodeRegulateur.h
 )
-
+# 
 add_executable(nodeMission src/nodeMission.cpp
         include/custom/nodeMission.h
 )
@@ -62,6 +64,8 @@ ament_target_dependencies(nodeKalman
         tf2_geometry_msgs
         visualization_msgs
         tf2_ros
+        gpsd_client
+        icm20948_driver
 )
 
 target_link_libraries(nodeRegulateur "${cpp_typesupport_target}")
@@ -96,6 +100,7 @@ endif()
 
 install(TARGETS nodeMission
         DESTINATION lib/${PROJECT_NAME})
+
 install(DIRECTORY launch
         DESTINATION share/${PROJECT_NAME}/
 )
