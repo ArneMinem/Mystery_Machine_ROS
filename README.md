@@ -27,15 +27,15 @@ https://teams.microsoft.com/_?culture=fr-fr&country=fr#/school/FileBrowserTabApp
 
 ## Séance 1 - 22/02/2024
 
-Nous avons créé notre groupe pour ce projet. Celui-ci se constitue de Matti Soucaille, Simon Martineau, Léa Rion et Laura Jouvet qui avaient déjà travaillé ensemble sur la voiture et nousa vons intégré deux brebis égarées: Main Tihami Ouazzami et Arne Jacobs.
+Nous avons créé notre groupe pour ce projet. Celui-ci se constitue de Matti Soucaille, Simon Martineau, Léa Rion et Laura Jouvet qui avaient déjà travaillé ensemble sur la voiture et nous avons intégré deux brebis égarées: Main Tihami Ouazzami et Arne Jacobs.
 
 ###Structure des nodes
-Nous nous sommes rassemblés autour du tableau de la mythique salle E006 afin de créer la structure des nodes. Après de longues minutes de réflexion, nous sommes arrivés au (merveilleux) graphe suivant:
+Tout d'abord, Arne a fini de construire l'étage de la Mustery Machine. Nous nous sommes ensuite rassemblés autour du tableau de la mythique salle E006 afin de créer la structure des nodes. Après de longues minutes de réflexion, nous sommes arrivés au (merveilleux) graphe suivant:
 
 **PHOTO**
 
 ### Essais capteurs/ Télécommande/ Début du code
-Nous nous sommes ensuite séparés en trois groupes: Simon et Arne ont commencé à tester les capteurs, Matti et Laura ont connecté la télécommande à la voiture et Léa et Main ont commencé le code. 
+Nous nous sommes ensuite séparés en trois groupes: Simon, Arne et Main ont commencé à tester les drivers des capteurs, Matti et Laura ont connecté la télécommande à la voiture et Léa a établi la connexion avec la RPi4. 
 
 ## Séance 2 - 20/03/2024
 Encore une fois, la Mystery Machine Team a dû se séparer.
