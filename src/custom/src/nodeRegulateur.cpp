@@ -77,3 +77,19 @@ void nodeRegulateur::createCommandTwist(void){
     this->cmdTwist_msg.angular.z = 200/M_PI * ecartCap ; // Vitesse de rotation
     this->cmdTwist_msg.linear.x = 400 * 2/M_PI * atan(0.0726*distance);  // Vitesse d'avance'
 }
+
+int main(int argc, char * argv[]) {
+    // Initialise ROS 2 pour l'executable
+    rclcpp::init(argc, argv);
+
+    auto node = std::make_shared<nodeRegulateur>();
+
+    // Créer le node et se met en attente de messages ou d'évènements du timer
+    // Attention, cette fonction est bloquante !
+    rclcpp::spin(node);
+
+    // Coupe ROS 2 pour l'executable
+    rclcpp::shutdown();
+
+    return 0;
+};

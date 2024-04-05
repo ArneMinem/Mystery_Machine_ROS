@@ -3,31 +3,30 @@
 #include <chrono>
 #include <functional>
 
-typedef struct {
+struct Lambert93Result {
     double x;
     double y;
-} Lambert93Result;
+};
 
 // Function to convert latitude and longitude to x and y coordinates using Lambert 93 projection
-Lambert93Result convertToLambert93(double latitude, double longitude) {
-    double n = 0.7256077650532670;
-    double C = 11754255.4260960;
-    double Xs = 700000.0;
-    double Ys = 12655612.0498760;
-    double lambda0 = 3.0 * (M_PI / 180.0);
-    double phi0 = 46.5 * (M_PI / 180.0);
+Lambert93Result convertToLambert93(double longitude, double latitude) {
+    // Initialize the projection transformation
+    PJ* P = proj_create_crs_to_crs(
+        nullptr,
+        "+proj=longlat +datum=WGS84",  // Source CRS definition (e.g., WGS84 geographic coordinates)
+        "+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",  // Target CRS definition (e.g., Lambert Conformal Conic projection)
+        nullptr);
 
-    double l = 0.5 * log((1 + sin(latitude)) / (1 - sin(latitude)));
-    double L = n * (longitude - lambda0);
+    PJ_COORD geo_coord, projected_coord;
+    geo_coord.lpzt.lam = longitude;  // Longitude
+    geo_coord.lpzt.phi = latitude;   // Latitude
+    geo_coord.lpzt.z = 0;            // Altitude
+    projected_coord = proj_trans(P, PJ_FWD, geo_coord);  // Forward projection from geographic to projected coordinates
 
-    double R = C * exp(-n * l);
-    double gamma = n * (longitude - lambda0);
+    // Free the projection object after use
+    proj_destroy(P);
 
-    double X = Xs + R * sin(gamma);
-    double Y = Ys - R * cos(gamma);
-
-    Lambert93Result result = {X, Y};
-    return result;
+    return {projected_coord.xyz.x, projected_coord.xyz.y};
 }
 
 nodeKalman::nodeKalman() : Node("nodeKalman")
@@ -42,7 +41,7 @@ nodeKalman::nodeKalman() : Node("nodeKalman")
     subscription_rpy_ = this->create_subscription<icm20948_driver::msg::RPY>("rpy", 10, std::bind(&nodeKalman::rpy_callback, this, _1));
 
     // Create a publisher to the topic "pose" with a queue size of 10
-    publisher_pose_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("pose", 10);
+    publisher_pose_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("realPosition", 10);
 }
 
 void nodeKalman::timer_callback() {
@@ -56,11 +55,11 @@ void nodeKalman::timer_callback() {
         message.header.frame_id = "map";
 
         // Transform latitude and longitude to x and y coordinates using Lambert 93 projection
-        Lambert93Result result = convertToLambert93(longitude_, latitude_);
+        Lambert93Result lambert93 = convertToLambert93(longitude_, latitude_);
 
         // Set the position of the message
-        message.pose.position.x = result.x;
-        message.pose.position.y = result.y;
+        message.pose.position.x = lambert93.x;
+        message.pose.position.y = lambert93.y;
 
         // Create a Quaternion from the roll, pitch, and yaw angles
         tf2::Quaternion q;
