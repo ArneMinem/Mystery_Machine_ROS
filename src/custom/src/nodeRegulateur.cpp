@@ -61,13 +61,13 @@ void nodeRegulateur::timerSendCmd(){
         if (this->lastStateBool){
             this->createCommandTwist();
         }
-        publisherSendCmd_->publish(this.cmdTwist_msg);
+        publisherSendCmd_->publish(this->cmdTwist_msg);
     }
 }
 
 void nodeRegulateur::createCommandTwist(void){
-    double dx = this.target_x - this.real_x
-    double dy = this.target_y - this.real_y
+    double dx = this->target_x - this->real_x
+    double dy = this->target_y - this->real_y
     double distance = sqrt(pow(dx,2) + pow(dy, 2))
     dx = (this->target_x  -  this->real_x)/(distance+0.01)
     dy = (this->target_y - this->real_y)/(distance+0.01)
