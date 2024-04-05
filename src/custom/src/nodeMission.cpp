@@ -3,21 +3,30 @@ using namespace Eigen;
 using namespace std::chrono_literals;
 
 nodeMission::nodeMission() : rclcpp::Node("nodeMission") {
-    timer_ = this->create_wall_timer(loop_dt_, std::bind(&nodeMission::timer_callback, this));
-    publisher_pose = this->create_publisher<geometry_msgs::msg::PoseStamped>("pose_voiture", 10);
-    subscription_pose_kalman = this->create_subscription<geometry_msgs::msg::PoseStamped>("pose_kalman", 10, std::bind(&nodeMission::callback, this, std::placeholders::_1));
-    publisher_etat = this->create_publisher<geometry_msgs::msg::Bool>("etat_misssion", 10);
+    // Timer
+    auto this->timerSendCmd_ = this->create_wall_timer(100ms, std::bind(&nodeMission::timerSendCmd, this)); // Timer d'envoie de la commande au regulateur
+
+    // Publisher
+    auto this->publisherSendPositionRegulator = this->create_publisher<geometry_msgs::msg::PoseStamped>("pose_voiture", 10);
+    auto this->publisherSendStateBoolRegulator = this->create_publisher<std_msgs::msg::Bool>("stateBool", 10);
+    // Subscriber
+    auto this->subscriberReceiveRealPosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("realPosition", 10, std::bind(&nodeMission::callbackSubscriptionReceiveRealPosition, this, _1)); // Subscriber reçoit la position du robot
+};
+
+void nodeMission::callbackSubscriptionReceiveRealPosition(const geometry_msgs::msg::PoseStamped &realPosition_msg){
+    this->pose_voiture = targetPosition_msg.data;
+}
+// void nodeMission::publisherSendStateBoolRegulator(const std_msgs::msg::Bool &stateBool_msg){
+//     this->stateBool = stateBool_msg.data;
+// }
+// void nodeMission::publisherSendPositionRegulator(const geometry_msgs::msg::PoseStamped &pose_voiture_msg){
+//     this->pose_voiture = pose_voiture_msg.data;
+// }
+void nodeMission::timerSendCmd(){
     
-};
-
-
-nodeMission::timer_callback() {
-    //TODO
-    //publish the pose of the car
-    //publish the state of the mission
-    //publish the command to the regulator
-    //publish the command to the manual
-};
+    publisherSendPositionRegulator->publish(this->pose_voiture);
+    publisherSendStateBoolRegulator->publish(this->stateBool);
+}
 
 int main(int argc, char * argv[]) {
     // Initialise ROS 2 pour l'executable

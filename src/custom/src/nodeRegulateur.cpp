@@ -49,38 +49,23 @@ void nodeRegulateur::callbackSubscriptionReceiveManualBool(const std_msgs::msg::
 
 void nodeRegulateur::timerSendCmd(){
 
-    this->createCommandTwist();
-
-    if ((this->lastStateBool) && not (this->lastManualBool)){
-        // Si l'état nous dit de ne pas contrôler et le PC d'être en manual (manual = True), on envoie rien
-    }
-
     if (this->lastManualBool){
         // Si le PC nous dit le PC d'être en manual (manual = True), on envoie rien
     }
 
-    if ( not (this->lastStateBool) && not (this->lastManualBool)){
-        // Si l'état nous dit de contrôler et le PC d'être en automatique (manual = False), on envoie une commande nulle
-        this.cmdTwist_msg.linear.x = 0;
-        this.cmdTwist_msg.linear.y = 0;
-        this.cmdTwist_msg.linear.z = 0;
+    if (not (this->lastManualBool)){
 
-        this.cmdTwist_msg.angular.x = 0;
-        this.cmdTwist_msg.angular.y = 0;
-        this.cmdTwist_msg.angular.z = 0;
-    }
+        this.cmdTwist_msg.linear.x = 0; // Vitesse d'avance
+        this.cmdTwist_msg.angular.z = 0; // Vitesse de rotation
 
-    if ((this->lastStateBool) && not (this->lastManualBool)){
-        // Si l'état nous dit de contrôler et le PC d'être en automatique (manual = False), on envoie la commande
-        this->createCommandTwist();
+        if (this->lastStateBool){
+            this->createCommandTwist();
+        }
         publisherSendCmd_->publish(this.cmdTwist_msg);
     }
-
 }
 
 void nodeRegulateur::createCommandTwist(void){
-
-
     double dx = this.target_x - this.real_x  # vecteur position du dd_boat vers objectif sur x
     double dy = this.target_y - this.real_y  # vecteur position du dd_boat vers objectif sur y
     double distance = sqrt(pow(dx,2) + pow(dy, 2))  # calcul distance
@@ -89,11 +74,6 @@ void nodeRegulateur::createCommandTwist(void){
 
     double ecartCap = np.sin(this->real_psi - this->target_psi)
 
-
-    CorrectionCap = 200/M_PI * ecartCap // Correction proportionel
-
-    DesiredSpeed = 400 * 2/M_PI * arctan(0.0726*distance)
-
-    speedL = (DesiredSpeed - CorrectionCap)
-    speedR = CorrectionCap * 2 + speedL
+    this.cmdTwist_msg.angular.z = 200/M_PI * ecartCap  // Vitesse de rotation
+    this.cmdTwist_msg.linear.x = 400 * 2/M_PI * arctan(0.0726*distance)  // Vitesse d'avance'
 }

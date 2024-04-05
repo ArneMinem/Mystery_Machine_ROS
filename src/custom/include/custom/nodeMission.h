@@ -20,11 +20,28 @@
 class nodeMission : public rclcpp::Node {
 public:
     nodeMission();
-    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr publisher_pose;                   //publisher to the regulator
-    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr subscription_pose_kalman;      //subscriber to the kalman filter
-    rclcpp::Publisher<geometry_msgs::msg::bool>::SharedPtr publisher_etat;                          //publisher of the state to the regulator
-    void timer_callback();          //Fonction de callback du timer
-    
+    /*
+     * Subscriber data and function
+     */
+    // Bool
+    bool stateBool_msg = true;
+    // Target position
+    float target_x = 0;
+    float target_y = 0;
+    float target_z = 0;
+    float target_psi = 0;
+    float target_theta = 0;
+    float target_phi = 0;
+    // Fonction callback
+    void callbackSubscriptionReceiveRealPosition(const geometry_msgs::msg::PoseStamped &realPosition_msg);
+    /*
+     * Publisher data and function
+     */
+    // commande
+    geometry_msgs::msg::PoseStamped pose_voiture_msg;
+    std_msgs::msg::Bool stateBool_msg;
+    // Fonction callback
+    void timerSendCmd(void);
 };
 
 
