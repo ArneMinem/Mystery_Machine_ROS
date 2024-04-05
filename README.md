@@ -13,7 +13,7 @@ See [voiture2a_motors_driver](./src/voiture2a_motors_driver/README.md) package
 See [gpsd client](./src/gpsd_client/README.md) package
 
 ## IMU node
-**Todo**
+**TODO**
 
 # Liens utiles pour le groupe
 
@@ -34,7 +34,7 @@ Tout d'abord, Arne a fini de construire l'étage de la Mustery Machine. Nous nou
 
 **PHOTO**
 
-### Essais capteurs/ Télécommande/ Début du code
+### Essais capteurs / Télécommande / Début du code
 Nous nous sommes ensuite séparés en trois groupes: Simon, Arne et Main ont commencé à tester les drivers des capteurs, Matti et Laura ont connecté la télécommande à la voiture et Léa a établi la connexion avec la RPi4. 
 
 ## Séance 2 - 20/03/2024
