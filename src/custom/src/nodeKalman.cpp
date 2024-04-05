@@ -3,41 +3,32 @@
 #include <chrono>
 #include <functional>
 
+typedef struct {
+    double x;
+    double y;
+} Lambert93Result;
+
 // Function to convert latitude and longitude to x and y coordinates using Lambert 93 projection
-std::pair<double, double> transformLatLonToXY(double latitude, double longitude) {
-    projPJ pj_latlon, pj_lambert;
-    const char *proj4_latlon = "+proj=longlat +ellps=WGS84";
-    const char *proj4_lambert = "+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80";
+Lambert93Result convertToLambert93(double latitude, double longitude) {
+    double n = 0.7256077650532670;
+    double C = 11754255.4260960;
+    double Xs = 700000.0;
+    double Ys = 12655612.0498760;
+    double lambda0 = 3.0 * (M_PI / 180.0);
+    double phi0 = 46.5 * (M_PI / 180.0);
 
-    // Initialize the projection for latitude and longitude (WGS84)
-    pj_latlon = pj_init_plus(proj4_latlon);
-    if (pj_latlon == nullptr) {
-        // Handle projection initialization error
-    }
+    double l = 0.5 * log((1 + sin(latitude)) / (1 - sin(latitude)));
+    double L = n * (longitude - lambda0);
 
-    // Initialize the Lambert 93 projection
-    pj_lambert = pj_init_plus(proj4_lambert);
-    if (pj_lambert == nullptr) {
-        // Handle projection initialization error
-    }
+    double R = C * exp(-n * l);
+    double gamma = n * (longitude - lambda0);
 
-    // Define input point in latitude and longitude
-    projXY latlon, lambert;
+    double X = Xs + R * sin(gamma);
+    double Y = Ys - R * cos(gamma);
 
-    latlon.u = DEG_TO_RAD * longitude;
-    latlon.v = DEG_TO_RAD * latitude;
-
-    // Transform latitude and longitude to Lambert 93 x and y coordinates
-    lambert = pj_transform(pj_latlon, pj_lambert, 1, 1, &latlon);
-
-    // Clean up
-    pj_free(pj_latlon);
-    pj_free(pj_lambert);
-
-    // Return the transformed x and y coordinates
-    return std::make_pair(lambert.u, lambert.v);
+    Lambert93Result result = {X, Y};
+    return result;
 }
-
 
 nodeKalman::nodeKalman() : Node("nodeKalman")
 {
@@ -64,19 +55,23 @@ void nodeKalman::timer_callback() {
         message.header.stamp = this->now();
         message.header.frame_id = "map";
 
-        // Transform latitude and longitude to x and y coordinates
-        std::pair<double, double> XY = transformLatLonToXY(latitude_, longitude_);  // Use member variables
+        // Transform latitude and longitude to x and y coordinates using Lambert 93 projection
+        Lambert93Result result = convertToLambert93(longitude_, latitude_);
 
-        // Set the position of the message using the transformed x and y coordinates
-        message.pose.position.x = XY.first;
-        message.pose.position.y = XY.second;
-        message.pose.position.z = 0.0;
+        // Set the position of the message
+        message.pose.position.x = result.x;
+        message.pose.position.y = result.y;
 
-        // Set the orientation of the message using the heading from RPY
-        // message.pose.orientation = calculateOrientationFromRPY(roll_, pitch_, yaw_);  // Uncomment if needed
+        // Create a Quaternion from the roll, pitch, and yaw angles
+        tf2::Quaternion q;
+        q.setRPY(roll_, pitch_, yaw_);
 
+        // Set the orientation of the message
+        message.pose.orientation = tf2::toMsg(q);
+        
         // Publish the message
         publisher_pose_->publish(message);
+
     }
 }
 

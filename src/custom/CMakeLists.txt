@@ -24,36 +24,36 @@ add_executable(nodeKalman src/nodeKalman.cpp
         include/custom/nodeKalman.h
 )
 
-add_executable(nodeRegulateur src/nodeRegulateur.cpp
-        include/custom/nodeRegulateur.h
-)
-# 
-add_executable(nodeMission src/nodeMission.cpp
-        include/custom/nodeMission.h
-)
+# add_executable(nodeRegulateur src/nodeRegulateur.cpp
+        # include/custom/nodeRegulateur.h
+# )
+
+# add_executable(nodeMission src/nodeMission.cpp
+        # include/custom/nodeMission.h
+# )
 
 
-ament_target_dependencies(nodeMission
-        std_srvs
-        rclcpp
-        std_msgs
-        geometry_msgs
-        tf2
-        tf2_geometry_msgs
-        visualization_msgs
-        tf2_ros
-)
+# ament_target_dependencies(nodeMission
+        # std_srvs
+        # rclcpp
+        # std_msgs
+        # geometry_msgs
+        # tf2
+        # tf2_geometry_msgs
+        # visualization_msgs
+        # tf2_ros
+# )
 
-ament_target_dependencies(nodeRegulateur
-        std_srvs
-        rclcpp
-        std_msgs
-        geometry_msgs
-        tf2
-        tf2_geometry_msgs
-        visualization_msgs
-        tf2_ros
-)
+# ament_target_dependencies(nodeRegulateur
+        # std_srvs
+        # rclcpp
+        # std_msgs
+        # geometry_msgs
+        # tf2
+        # tf2_geometry_msgs
+        # visualization_msgs
+        # tf2_ros
+# )
 
 ament_target_dependencies(nodeKalman
         std_srvs
@@ -68,20 +68,20 @@ ament_target_dependencies(nodeKalman
         icm20948_driver
 )
 
-target_link_libraries(nodeRegulateur "${cpp_typesupport_target}")
-target_include_directories(nodeRegulateur PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>)
+# target_link_libraries(nodeRegulateur "${cpp_typesupport_target}")
+# target_include_directories(nodeRegulateur PUBLIC
+        # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        # $<INSTALL_INTERFACE:include>)
 
 target_link_libraries(nodeKalman "${cpp_typesupport_target}")
 target_include_directories(nodeKalman PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
 
-target_link_libraries(nodeMission "${cpp_typesupport_target}")
-target_include_directories(nodeMission PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>)
+# target_link_libraries(nodeMission "${cpp_typesupport_target}")
+# target_include_directories(nodeMission PUBLIC
+        # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        # $<INSTALL_INTERFACE:include>)
 
 if(BUILD_TESTING)
     find_package(ament_lint_auto REQUIRED)
@@ -98,8 +98,8 @@ endif()
 
 
 
-install(TARGETS nodeMission
-        DESTINATION lib/${PROJECT_NAME})
+# install(TARGETS nodeMission
+        # DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch
         DESTINATION share/${PROJECT_NAME}/
@@ -108,11 +108,7 @@ install(DIRECTORY launch
 install(TARGETS nodeKalman
         DESTINATION lib/${PROJECT_NAME})
 
-install(TARGETS nodeRegulateur
-        DESTINATION lib/${PROJECT_NAME})
-
-install(DIRECTORY launch
-        DESTINATION share/${PROJECT_NAME}/
-)
+# install(TARGETS nodeRegulateur
+        # DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
