@@ -3,8 +3,6 @@
 #include <chrono>
 #include <functional>
 
-#include <proj.h>
-
 // Function to convert latitude and longitude to x and y coordinates using Lambert 93 projection
 std::pair<double, double> transformLatLonToXY(double latitude, double longitude) {
     projPJ pj_latlon, pj_lambert;
@@ -41,7 +39,6 @@ std::pair<double, double> transformLatLonToXY(double latitude, double longitude)
 }
 
 
-
 nodeKalman::nodeKalman() : Node("nodeKalman")
 {
     // Create a timer that calls the callback function once every 500ms
@@ -57,8 +54,7 @@ nodeKalman::nodeKalman() : Node("nodeKalman")
     publisher_pose_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("pose", 10);
 }
 
-void nodeKalman::timer_callback()
-{
+void nodeKalman::timer_callback() {
     // Check if the GPS and RPY data have been received
     if (gps_data_received_ && rpy_data_received_) {
         // Create a new message of type "geometry_msgs::msg::PoseStamped"
@@ -68,8 +64,8 @@ void nodeKalman::timer_callback()
         message.header.stamp = this->now();
         message.header.frame_id = "map";
 
-        // Transform latitude and longitude to x and y coordinates (you may need to use a suitable projection method)
-        std::pair<double, double> XY = transformLatLonToXY(latitude, longitude)
+        // Transform latitude and longitude to x and y coordinates
+        std::pair<double, double> XY = transformLatLonToXY(latitude_, longitude_);  // Use member variables
 
         // Set the position of the message using the transformed x and y coordinates
         message.pose.position.x = XY.first;
@@ -77,7 +73,7 @@ void nodeKalman::timer_callback()
         message.pose.position.z = 0.0;
 
         // Set the orientation of the message using the heading from RPY
-        message.pose.orientation = calculateOrientationFromRPY(roll_, pitch_, yaw_);
+        // message.pose.orientation = calculateOrientationFromRPY(roll_, pitch_, yaw_);  // Uncomment if needed
 
         // Publish the message
         publisher_pose_->publish(message);
@@ -117,3 +113,5 @@ int main(int argc, char * argv[]) {
     
     return 0;
 };
+
+
