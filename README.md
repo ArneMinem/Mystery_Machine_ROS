@@ -30,7 +30,7 @@ Nous avons créé notre groupe pour ce projet. Celui-ci se constitue de Matti So
 ### Structure des nodes
 Tout d'abord, Arne a fini de construire l'étage de la Mustery Machine. Nous nous sommes ensuite rassemblés autour du tableau de la mythique salle E006 afin de créer la structure des nodes. Après de longues minutes de réflexion, nous sommes arrivés au (merveilleux) graphe suivant:
 
-![](Graphe_J1.png)
+![](Photos/Graphe_J1.png)
 
 **PHOTO**
 
