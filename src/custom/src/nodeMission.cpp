@@ -7,7 +7,7 @@ nodeMission::nodeMission() : rclcpp::Node("nodeMission") {
     this->timerSendCmd = this->create_wall_timer(100ms, std::bind(&nodeMission::timerSendCmdcallback, this)); // Timer d'envoie de la commande au regulateur
 
     // Publisher
-    this->publisherSendPositionRegulator = this->create_publisher<geometry_msgs::msg::PoseStamped>("targetPosition", 10);
+    this->publisherSendPositionRegulator = this->create_publisher<geometry_msgs::msg::PoseStamped>("pose_voiture_msg", 10);
     this->publisherSendStateBoolRegulator = this->create_publisher<std_msgs::msg::Bool>("stateBool", 10);
     // Subscriber
     this->subscriberReceiveTargetPosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("realPosition", 10, std::bind(&nodeMission::callbackSubscriptionReceiveTargetPosition, this, _1)); // Subscriber reçoit la position du robot
