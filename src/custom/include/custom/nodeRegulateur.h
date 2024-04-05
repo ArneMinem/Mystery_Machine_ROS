@@ -6,7 +6,26 @@
 #define PROJET_RC_NODEREGULATEUR_H
 
 
-class nodeRegulateur {
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+#include "geometry_msgs/msg/pose_stamped.hpp"
+#include "std_srvs/srv/trigger.hpp"
+#include "geometry_msgs/msg/twist.hpp"
+#include "std_msgs/msg/bool.hpp"
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
+#include "tf2_ros/transform_broadcaster.h"
+#include "tf2_ros/transform_listener.h"
+#include "tf2_ros/buffer.h"
+#include "visualization_msgs/msg/marker.hpp"
+
+using namespace std::chrono_literals;
+using namespace std::placeholders;
+
+
+class nodeRegulateur : public rclcpp::Node {
+
+    nodeRegulateur();
 
     /*
      * Subscriber data and function
@@ -41,6 +60,12 @@ class nodeRegulateur {
     geometry_msgs::msg::Twist cmdTwist_msg;
     // Fonction callback
     void timerSendCmd(void);
+
+    /*
+     * Fonction intermédiaire
+     */
+    void createCommandTwist(void);
+
 };
 
 

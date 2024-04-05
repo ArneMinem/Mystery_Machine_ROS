@@ -16,6 +16,27 @@ find_package(tf2_ros REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
 
+
+# BoatSimulated
+add_executable(nodeRegulateur src/nodeRegulateur.cpp
+        include/custom/nodeRegulateur.h
+)
+
+ament_target_dependencies(nodeRegulateur
+        std_srvs
+        rclcpp
+        std_msgs
+        geometry_msgs
+        tf2
+        tf2_geometry_msgs
+        visualization_msgs
+        tf2_ros
+)
+target_link_libraries(nodeRegulateur "${cpp_typesupport_target}")
+target_include_directories(nodeRegulateur PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -27,6 +48,9 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+install(TARGETS nodeRegulateur
+        DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY launch
 DESTINATION share/${PROJECT_NAME}/
