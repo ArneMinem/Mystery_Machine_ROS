@@ -13,8 +13,10 @@
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 #include "visualization_msgs/msg/marker.hpp"
- 
-
+#include "std_msgs/msg/bool.hpp"
+#include "tf2/utils.h"
+using namespace std::chrono_literals;
+using namespace std::placeholders;
 
 
 class nodeMission : public rclcpp::Node {
@@ -23,17 +25,13 @@ public:
     /*
      * Subscriber data and function
      */
-    // Bool
-    bool stateBool_msg = true;
+
     // Target position
     float target_x = 0;
     float target_y = 0;
-    float target_z = 0;
-    float target_psi = 0;
-    float target_theta = 0;
-    float target_phi = 0;
+
     // Fonction callback
-    void callbackSubscriptionReceiveRealPosition(const geometry_msgs::msg::PoseStamped &realPosition_msg);
+    void callbackSubscriptionReceiveTargetPosition(const geometry_msgs::msg::PoseStamped &TargetPosition_msg);
     /*
      * Publisher data and function
      */
@@ -41,7 +39,12 @@ public:
     geometry_msgs::msg::PoseStamped pose_voiture_msg;
     std_msgs::msg::Bool stateBool_msg;
     // Fonction callback
-    void timerSendCmd(void);
+    void timerSendCmdcallback();
+private:
+    rclcpp::TimerBase::SharedPtr timerSendCmd;
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr publisherSendPositionRegulator;
+    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr publisherSendStateBoolRegulator;
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr subscriberReceiveTargetPosition;
 };
 
 

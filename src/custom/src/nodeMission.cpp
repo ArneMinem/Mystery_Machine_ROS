@@ -4,28 +4,33 @@ using namespace std::chrono_literals;
 
 nodeMission::nodeMission() : rclcpp::Node("nodeMission") {
     // Timer
-    auto this->timerSendCmd_ = this->create_wall_timer(100ms, std::bind(&nodeMission::timerSendCmd, this)); // Timer d'envoie de la commande au regulateur
+    this->timerSendCmd = this->create_wall_timer(100ms, std::bind(&nodeMission::timerSendCmdcallback, this)); // Timer d'envoie de la commande au regulateur
 
     // Publisher
-    auto this->publisherSendPositionRegulator = this->create_publisher<geometry_msgs::msg::PoseStamped>("pose_voiture", 10);
-    auto this->publisherSendStateBoolRegulator = this->create_publisher<std_msgs::msg::Bool>("stateBool", 10);
+    this->publisherSendPositionRegulator = this->create_publisher<geometry_msgs::msg::PoseStamped>("pose_voiture_msg", 10);
+    this->publisherSendStateBoolRegulator = this->create_publisher<std_msgs::msg::Bool>("stateBool", 10);
     // Subscriber
-    auto this->subscriberReceiveRealPosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("realPosition", 10, std::bind(&nodeMission::callbackSubscriptionReceiveRealPosition, this, _1)); // Subscriber reçoit la position du robot
+    this->subscriberReceiveTargetPosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("realPosition", 10, std::bind(&nodeMission::callbackSubscriptionReceiveTargetPosition, this, _1)); // Subscriber reçoit la position du robot
 };
 
-void nodeMission::callbackSubscriptionReceiveRealPosition(const geometry_msgs::msg::PoseStamped &realPosition_msg){
-    this->pose_voiture = targetPosition_msg.data;
+void nodeMission::callbackSubscriptionReceiveTargetPosition(const geometry_msgs::msg::PoseStamped &targetPosition_msg){
+    this->target_x = targetPosition_msg.pose.position.x;
+    this->target_y = targetPosition_msg.pose.position.y;
+
 }
-// void nodeMission::publisherSendStateBoolRegulator(const std_msgs::msg::Bool &stateBool_msg){
-//     this->stateBool = stateBool_msg.data;
-// }
-// void nodeMission::publisherSendPositionRegulator(const geometry_msgs::msg::PoseStamped &pose_voiture_msg){
-//     this->pose_voiture = pose_voiture_msg.data;
-// }
-void nodeMission::timerSendCmd(){
-    
-    publisherSendPositionRegulator->publish(this->pose_voiture);
-    publisherSendStateBoolRegulator->publish(this->stateBool);
+
+void nodeMission::timerSendCmdcallback(){
+    this->pose_voiture_msg.pose.position.x = this->target_x;
+    this->pose_voiture_msg.pose.position.y = this->target_y;
+
+
+    publisherSendPositionRegulator->publish(this->pose_voiture_msg);
+    publisherSendStateBoolRegulator->publish(this->stateBool_msg);
+
+    if (pose_voiture_msg.pose.position.x == 10){
+        stateBool_msg.data = false;
+    }
+
 }
 
 int main(int argc, char * argv[]) {

@@ -26,6 +26,7 @@ using namespace std::placeholders;
 
 class nodeRegulateur : public rclcpp::Node {
 
+public:
     nodeRegulateur();
 
     /*
@@ -67,7 +68,6 @@ class nodeRegulateur : public rclcpp::Node {
      */
     void createCommandTwist(void);
 
-private:
     rclcpp::TimerBase::SharedPtr timerSendCmd_; // objet timer
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr publisherSendCmd_; // objet publisher
 
