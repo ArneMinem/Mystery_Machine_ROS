@@ -72,8 +72,8 @@ void nodeRegulateur::createCommandTwist(void){
     dx = (this->target_x  -  this->real_x)/(distance+0.01);
     dy = (this->target_y - this->real_y)/(distance+0.01);
 
-    double ecartCap = np.sin(this->real_psi - this->target_psi);
+    double ecartCap = sin(this->real_psi - this->target_psi);
 
     this->cmdTwist_msg.angular.z = 200/M_PI * ecartCap ; // Vitesse de rotation
-    this->cmdTwist_msg.linear.x = 400 * 2/M_PI * arctan(0.0726*distance);  // Vitesse d'avance'
+    this->cmdTwist_msg.linear.x = 400 * 2/M_PI * atan(0.0726*distance);  // Vitesse d'avance'
 }
