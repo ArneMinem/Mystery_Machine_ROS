@@ -18,7 +18,7 @@ find_package(std_srvs REQUIRED)
 
 
 # BoatSimulated
-add_executable(nodeRegulateur src/nodeKalman.cpp
+add_executable(nodeKalman src/nodeKalman.cpp
         include/custom/nodeKalman.h
 )
 
