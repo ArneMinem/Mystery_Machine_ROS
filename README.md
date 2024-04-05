@@ -1,7 +1,5 @@
-# voiture2A-ros
-L'architecture utilisée est un seul package pour tous les nodes.
-
 # Node architecture
+L'architecture utilisée est un seul package pour tous les nodes.
 
 ## Camera node
 https://index.ros.org/r/usb_cam/
