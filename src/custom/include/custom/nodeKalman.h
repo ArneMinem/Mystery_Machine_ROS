@@ -41,7 +41,10 @@ class nodeKalman : public rclcpp::Node
 {
 public:
     nodeKalman();
-    
+
+    void gps_callback(const gpsd_client::msg::GpsFix::SharedPtr msg);
+    void rpy_callback(const icm20948_driver::msg::RPY::SharedPtr msg);
+
 private:
     void timer_callback();
 
