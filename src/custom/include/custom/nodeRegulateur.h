@@ -18,6 +18,7 @@
 #include "tf2_ros/transform_listener.h"
 #include "tf2_ros/buffer.h"
 #include "visualization_msgs/msg/marker.hpp"
+#include <cmath>
 
 using namespace std::chrono_literals;
 using namespace std::placeholders;
