@@ -27,7 +27,7 @@ https://teams.microsoft.com/_?culture=fr-fr&country=fr#/school/FileBrowserTabApp
 
 Nous avons créé notre groupe pour ce projet. Celui-ci se constitue de Matti Soucaille, Simon Martineau, Léa Rion et Laura Jouvet qui avaient déjà travaillé ensemble sur la voiture et nous avons intégré deux brebis égarées: Main Tihami Ouazzami et Arne Jacobs.
 
-###Structure des nodes
+### Structure des nodes
 Tout d'abord, Arne a fini de construire l'étage de la Mustery Machine. Nous nous sommes ensuite rassemblés autour du tableau de la mythique salle E006 afin de créer la structure des nodes. Après de longues minutes de réflexion, nous sommes arrivés au (merveilleux) graphe suivant:
 
 ![](Photos/Graphe_J1.png)
