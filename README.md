@@ -32,7 +32,6 @@ Tout d'abord, Arne a fini de construire l'étage de la Mustery Machine. Nous nou
 
 ![](Photos/Graphe_J1.jpg)
 
-
 ### Essais capteurs / Télécommande / Début du code
 Nous nous sommes ensuite séparés en trois groupes: Simon, Arne et Main ont commencé à tester les drivers des capteurs, Matti et Laura ont connecté la télécommande à la voiture et Léa a établi la connexion avec la RPi4. 
 
@@ -56,8 +55,9 @@ Pour cette dernière séance, nous avons gardé les mêmes sous-groupes que la d
 
 ### Calibration et acquisition
 Cette séance a été compliquée pour Laura, Léa et Simon. C'est le ventre vide à cause des listeux trop longs pour livrer des crêpes que nous avons essayé de corriger les nombreuses erreurs. Notre code fonctionnait sur l'ordinateur de Maël et nous avons donc essayé tant bien que mal de le faire fonctionner sur le notre.  
-Pour cela, nous avons dû installer plusieurs bibliothèques et modifier nos fichiers launch, cmakelist et config afin d'obtenir nos matrices A et B.  
+Pour cela, nous avons dû installer plusieurs bibliothèques et modifier nos fichiers launch, cmakelist et config. Nous avons alors (ENFIN) réussi à faire le calibrage et à obtenir nos matrices A et B.  
 
+![](Photos/Calibration.png)
 
 A = [[0.957656, -0.0150408, 0.0571726],
      [-0.0150408, 1.05297, -0.0623213],
