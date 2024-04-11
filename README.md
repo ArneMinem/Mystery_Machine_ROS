@@ -68,3 +68,5 @@ B = [5.02523, -41.3739, 5.53437]
 ### Structure des nodes
 Arne, Main et Matti ont continué la structure des nodes.
 **A COMPLETER**
+
+## Séance supplémentaire - 11/04/2024
