@@ -32,7 +32,6 @@ Tout d'abord, Arne a fini de construire l'étage de la Mustery Machine. Nous nou
 
 ![](Photos/Graphe_J1.jpg)
 
-**PHOTO**
 
 ### Essais capteurs / Télécommande / Début du code
 Nous nous sommes ensuite séparés en trois groupes: Simon, Arne et Main ont commencé à tester les drivers des capteurs, Matti et Laura ont connecté la télécommande à la voiture et Léa a établi la connexion avec la RPi4. 
