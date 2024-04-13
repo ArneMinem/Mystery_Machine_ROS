@@ -15,6 +15,8 @@
 #include "visualization_msgs/msg/marker.hpp"
 #include "std_msgs/msg/bool.hpp"
 #include "tf2/utils.h"
+#include <cmath>
+#include <vector>
 using namespace std::chrono_literals;
 using namespace std::placeholders;
 
@@ -30,8 +32,12 @@ public:
     float target_x = 0;
     float target_y = 0;
 
+    // target_list est organisé en paires [x0, y0, x1, y1, ...]
+    std::vector<float> target_list = {0, 0, 1, 1, 2, 2, 3, 3, 4, 4};
+    long unsigned int k = 0;
+
     // Fonction callback
-    void callbackSubscriptionReceiveTargetPosition(const geometry_msgs::msg::PoseStamped &TargetPosition_msg);
+    void callbackSubscriptionReceivePosition(const geometry_msgs::msg::PoseStamped &Position_msg);
     /*
      * Publisher data and function
      */
@@ -41,10 +47,11 @@ public:
     // Fonction callback
     void timerSendCmdcallback();
 private:
+    const float epsilon = 13;
     rclcpp::TimerBase::SharedPtr timerSendCmd;
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr publisherSendPositionRegulator;
     rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr publisherSendStateBoolRegulator;
-    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr subscriberReceiveTargetPosition;
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr subscriberReceivePosition;
 };
 
 

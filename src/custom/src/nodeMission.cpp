@@ -10,13 +10,18 @@ nodeMission::nodeMission() : rclcpp::Node("nodeMission") {
     this->publisherSendPositionRegulator = this->create_publisher<geometry_msgs::msg::PoseStamped>("targetPosition", 10);
     this->publisherSendStateBoolRegulator = this->create_publisher<std_msgs::msg::Bool>("stateBool", 10);
     // Subscriber
-    this->subscriberReceiveTargetPosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("realPosition", 10, std::bind(&nodeMission::callbackSubscriptionReceiveTargetPosition, this, _1)); // Subscriber reçoit la position du robot
+    this->subscriberReceivePosition = this->create_subscription<geometry_msgs::msg::PoseStamped>("realPosition", 10, std::bind(&nodeMission::callbackSubscriptionReceivePosition, this, _1)); // Subscriber reçoit la position du robot
 };
 
-void nodeMission::callbackSubscriptionReceiveTargetPosition(const geometry_msgs::msg::PoseStamped &targetPosition_msg){
-    this->target_x = targetPosition_msg.pose.position.x;
-    this->target_y = targetPosition_msg.pose.position.y;
+void nodeMission::callbackSubscriptionReceivePosition(const geometry_msgs::msg::PoseStamped &Position_msg){
+    if (std::fabs(Position_msg.pose.position.x - this->target_x) < epsilon &&
+        std::fabs(Position_msg.pose.position.y - this->target_y) < epsilon)
+        if (k < target_list.size() / 2 - 1) {
+            k += 1;
+            this->target_x = target_list[k*2]; 
+            this->target_y = target_list[k*2+1];
 
+    }
 }
 
 void nodeMission::timerSendCmdcallback(){
