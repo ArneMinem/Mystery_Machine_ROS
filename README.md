@@ -28,7 +28,6 @@ Arne, Main et Matti ont commencé la structure des nodes.
 Chacun s'occupait d'un node différent. Arne a commencé à travailler sur le node du filtre Kalman, Main sur le node de mission et Matti sur le node du régulateur.
 
 A la fin de cette séance chacun devait avoir un node qui récupère les bons types de messages et qui publie les bons types de messages (ceux choisit au par avant). On avait plutot bien avancé sur la structure des nodes puisque deux des trois nodes étaient déjà fonctionnels mais sans programme de contrôle ou autre.
-**A COMPLETER**
 
 
 ## Séance 3 - 05/04/2024
@@ -82,23 +81,14 @@ Publication de l'état et de la position
 Le callback timerSendCmdcallback est régulièrement invoqué par le timer. Il met à jour et publie la position cible actuelle ainsi que l'état du robot. Cette fonction est cruciale pour maintenir le régulateur informé des objectifs à atteindre et de l'état opérationnel du robot.
 
 ## Séance supplémentaire - 11/04/2024
-<<<<<<< HEAD
-Nous avons décidé de nous retrouver une dernière fois pour finaliser le projet.
 
-### Calibration et acquisition
-
-
-
-### Structure des nodes
-Nous avons fini de compléter le launch pour lancer au même temps nos trois nodes et les trois nodes des drivers.
-Sur l'ordinateur nous arrivons à build sans problème et à lancer le launch qui toutefois pose quelques soucis mais sur la voiture nous n'arrivons pas à build. Nous ne comprennons pas à quoi c'est lié mais le build tourne à l'inifni et ne se termine jamais.
-Le groupe de Titouan, Nicolas etc. a essayé leur code fonctionnel sur notre voiture mais ce dernier n'a pas fonctionné. Nous avons donc décidé de ne pas continuer à chercher la source du problème et de rendre le projet tel quel en pensant que le problème vient surement de la voiture.
-=======
-
-Le 11 avril, l'équipe s'est réunie une dernière fois. 
+Le 11 avril, l'équipe s'est réunie une dernière fois pour finaliser le projet.
 Tout d'abord, nous nous sommes expliqué ce que chacun avait fait pour que tout le monde soit à jour sur l'ensemble du projet. Nous nous sommes ensuite réparti les tâches que chacun devrait rédiger dans le rapport en nous fixant des dates limites.
-Enfin, nous avons essayé de terminer le projet.
-Nous avons essayé de compiler les codes sur la voiture mais après une heure d'attente nous avons abandonné.
+Enfin, nous avons essayé de terminer le projet. Nous avons fini de compléter le launch pour lancer en même temps nos trois nodes et les trois nodes des drivers.
+Sur l'ordinateur, nous avons réussi à build sans problème et à lancer le launch mais sur la voiture nous n'avons pas réussi à build. Nous n'avons pas compris à quoi cela était lié mais le build tournait à l'inifni et ne se terminait jamais.
+Le groupe de Titouan, Nicolas etc. n'a pas non plus réussi à compiler tout en même temps sur la voiture. Nous pensons donc que c'est trop lourd et qu'il faudrait passer par un Docker pour compiler. Nous n'avons malheureusement pas eu le temps d'essayer cette solution.
+
+
 
 # Node architecture
 L'architecture utilisée est un seul package pour tous les nodes.
@@ -113,7 +103,8 @@ See [voiture2a_motors_driver](./src/voiture2a_motors_driver/README.md) package
 See [gpsd client](./src/gpsd_client/README.md) package
 
 ## IMU node
-**TODO**
+See [icm20948 driver] (./src/icm20948_driver) package
+
 
 # Liens utiles pour le groupe
 
@@ -122,8 +113,5 @@ https://fr.overleaf.com/9866661758nfpjsjcrcqnp#e54566
 
 ## Teams
 https://teams.microsoft.com/_?culture=fr-fr&country=fr#/school/FileBrowserTabApp/G%C3%A9n%C3%A9ral?threadId=19:4if7g6Iue2ZQTwf5h9PbC7U7gJQ7TYtp8hfr5uuxIJc1@thread.tacv2&ctx=channel
-
->>>>>>> 1436b724b41e6d87b0f6f96bef07eb6f48bf7b3c
-
 
 
