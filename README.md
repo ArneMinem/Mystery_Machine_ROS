@@ -1,26 +1,3 @@
-# Node architecture
-L'architecture utilisée est un seul package pour tous les nodes.
-
-## Camera node
-https://index.ros.org/r/usb_cam/
-
-## Motors node
-See [voiture2a_motors_driver](./src/voiture2a_motors_driver/README.md) package
-
-## GNSS node
-See [gpsd client](./src/gpsd_client/README.md) package
-
-## IMU node
-**TODO**
-
-# Liens utiles pour le groupe
-
-## Overleaf, fichier Latex pour le rendu de projet 
-https://fr.overleaf.com/9866661758nfpjsjcrcqnp#e54566
-
-## Teams
-https://teams.microsoft.com/_?culture=fr-fr&country=fr#/school/FileBrowserTabApp/G%C3%A9n%C3%A9ral?threadId=19:4if7g6Iue2ZQTwf5h9PbC7U7gJQ7TYtp8hfr5uuxIJc1@thread.tacv2&ctx=channel
-
 # Déroulement des séances
 
 ## Séance 1 - 22/02/2024
@@ -121,4 +98,30 @@ Tout d'abord, nous nous sommes expliqué ce que chacun avait fait pour que tout 
 Enfin, nous avons essayé de terminer le projet.
 Nous avons essayé de compiler les codes sur la voiture mais après une heure d'attente nous avons abandonné.
 
+# Node architecture
+L'architecture utilisée est un seul package pour tous les nodes.
+
+## Camera node
+https://index.ros.org/r/usb_cam/
+
+## Motors node
+See [voiture2a_motors_driver](./src/voiture2a_motors_driver/README.md) package
+
+## GNSS node
+See [gpsd client](./src/gpsd_client/README.md) package
+
+## IMU node
+**TODO**
+
+# Liens utiles pour le groupe
+
+## Overleaf, fichier Latex pour le rendu de projet 
+https://fr.overleaf.com/9866661758nfpjsjcrcqnp#e54566
+
+## Teams
+https://teams.microsoft.com/_?culture=fr-fr&country=fr#/school/FileBrowserTabApp/G%C3%A9n%C3%A9ral?threadId=19:4if7g6Iue2ZQTwf5h9PbC7U7gJQ7TYtp8hfr5uuxIJc1@thread.tacv2&ctx=channel
+
 >>>>>>> 1436b724b41e6d87b0f6f96bef07eb6f48bf7b3c
+
+
+
