@@ -28,7 +28,7 @@ https://teams.microsoft.com/_?culture=fr-fr&country=fr#/school/FileBrowserTabApp
 Nous avons créé notre groupe pour ce projet. Celui-ci se constitue de Matti Soucaille, Simon Martineau, Léa Rion et Laura Jouvet qui avaient déjà travaillé ensemble sur la voiture et nous avons intégré deux brebis égarées: Main Tihami Ouazzami et Arne Jacobs.
 
 ### Structure des nodes
-Tout d'abord, Arne a fini de construire l'étage de la Mustery Machine. Nous nous sommes ensuite rassemblés autour du tableau de la mythique salle E006 afin de créer la structure des nodes. Après de longues minutes de réflexion, nous sommes arrivés au (merveilleux) graphe suivant:
+Tout d'abord, Arne a fini de construire l'étage de la Mystery Machine. Nous nous sommes ensuite rassemblés autour du tableau de la mythique salle E006 afin de créer la structure des nodes. Après de longues minutes de réflexion, nous sommes arrivés au (merveilleux) graphe suivant:
 
 ![](Photos/Graphe_J1.jpg)
 
@@ -47,6 +47,10 @@ On avait le Ros Bag mais notre fichier avait un problème dans l'installation de
 
 ### Structure des nodes
 Arne, Main et Matti ont commencé la structure des nodes.
+
+Chacun s'occupait d'un node différent. Arne a commencé à travailler sur le node du filtre Kalman, Main sur le node de mission et Matti sur le node du réguklateur.
+
+A la fin de cette séance chacun devait avoir un node qui récupère les bons types de messages et qui publie les bons types de messages (ceux choisit au par avant). On avait plutot bien avancé sur la structure des nodes puisque deux des trois nodes étaient déjà fonctionnels mais sans programme de contrôle ou autre.
 **A COMPLETER**
 
 
@@ -67,6 +71,18 @@ B = [5.02523, -41.3739, 5.53437]
 
 ### Structure des nodes
 Arne, Main et Matti ont continué la structure des nodes.
+A la fin de cette séance les 3 nodes s'emboitent bien les uns dans les autres et les messages sont bien transmis entre les nodes.
+Nous avons pu vérifier cela sur notre ordinateur mais ayant des problèmes avec la voiture nous n'avons pas pu tester sur la voiture.
 **A COMPLETER**
 
 ## Séance supplémentaire - 11/04/2024
+Nous avons décidé de nous retrouver une dernière fois pour finaliser le projet.
+
+### Calibration et acquisition
+
+
+
+### Structure des nodes
+Nous avons fini de compléter le launch pour lancer au même temps nos trois nodes et les trois nodes des drivers.
+Sur l'ordinateur nous arrivons à build sans problème et à lancer le launch qui toutefois pose quelques soucis mais sur la voiture nous n'arrivons pas à build. Nous ne comprennons pas à quoi c'est lié mais le build tourne à l'inifni et ne se termine jamais.
+Le groupe de Titouan, Nicolas etc. a essayé leur code fonctionnel sur notre voiture mais ce dernier n'a pas fonctionné. Nous avons donc décidé de ne pas continuer à chercher la source du problème et de rendre le projet tel quel en pensant que le problème vient surement de la voiture.
