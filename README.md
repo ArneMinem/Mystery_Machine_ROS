@@ -28,7 +28,7 @@ https://teams.microsoft.com/_?culture=fr-fr&country=fr#/school/FileBrowserTabApp
 Nous avons créé notre groupe pour ce projet. Celui-ci se constitue de Matti Soucaille, Simon Martineau, Léa Rion et Laura Jouvet qui avaient déjà travaillé ensemble sur la voiture et nous avons intégré deux brebis égarées: Main Tihami Ouazzami et Arne Jacobs.
 
 ### Structure des nodes
-Tout d'abord, Arne a fini de construire l'étage de la Mustery Machine. Nous nous sommes ensuite rassemblés autour du tableau de la mythique salle E006 afin de créer la structure des nodes. Après de longues minutes de réflexion, nous sommes arrivés au (merveilleux) graphe suivant:
+Tout d'abord, Arne a fini de construire l'étage de la Mystery Machine. Nous nous sommes ensuite rassemblés autour du tableau de la mythique salle E006 afin de créer la structure des nodes. Après de longues minutes de réflexion, nous sommes arrivés au (merveilleux) graphe suivant:
 
 ![](Photos/Graphe_J1.jpg)
 
@@ -95,4 +95,11 @@ La fonction callbackSubscriptionReceivePosition est appelée à chaque réceptio
 Publication de l'état et de la position
 
 Le callback timerSendCmdcallback est régulièrement invoqué par le timer. Il met à jour et publie la position cible actuelle ainsi que l'état du robot. Cette fonction est cruciale pour maintenir le régulateur informé des objectifs à atteindre et de l'état opérationnel du robot.
+
 ## Séance supplémentaire - 11/04/2024
+
+Le 11 avril, l'équipe s'est réunie une dernière fois. 
+Tout d'abord, nous nous sommes expliqué ce que chacun avait fait pour que tout le monde soit à jour sur l'ensemble du projet. Nous nous sommes ensuite réparti les tâches que chacun devrait rédiger dans le rapport en nous fixant des dates limites.
+Enfin, nous avons essayé de terminer le projet.
+Nous avons essayé de compiler les codes sur la voiture mais après une heure d'attente nous avons abandonné.
+
