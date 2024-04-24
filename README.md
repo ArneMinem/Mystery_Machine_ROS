@@ -46,6 +46,8 @@ A = [[0.957656, -0.0150408, 0.0571726],
 
 B = [5.02523, -41.3739, 5.53437]
 
+Sur cette image, nous voyons en rouge la sphère de points que nous avons obtenus et, en vert, la sphère de points de référence que l'on souhaiterait avoir. Les matrices A et B permettent de passer de notre repère au repère souhaité.
+
 ### Structure des nodes
 Arne, Main et Matti ont continué la structure des nodes.
 A la fin de cette séance les 3 nodes s'emboitent bien les uns dans les autres et les messages sont bien transmis entre les nodes.
