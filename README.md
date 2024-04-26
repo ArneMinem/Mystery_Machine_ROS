@@ -16,9 +16,9 @@ Nous nous sommes ensuite séparés en trois groupes: Simon, Arne et Main ont com
 Encore une fois, la Mystery Machine Team a dû se séparer.
 
 ### Calibration et acquisition
-Laura, Lea et Simon avaient pour mission de télécommander la voiture autour de la piste d'athlétisme en faisant une acquisition avec tous les capteurs.
+Laura, Léa et Simon avaient pour mission de télécommander la voiture autour de la piste d'athlétisme en faisant une acquisition avec tous les capteurs.
 Nous avons commencé par lancer les drivers qui avaient été installés la fois précédente. Le test GPS a bien fonctionné entre les bâtiments puis nous avons perdu le signal sur la piste d'athlétisme.
-Nous avons ensuite mis à jour les documents avec le nouveau fichier de Thomas Le Mezo puis nous avons créé un fichier launch pour lancer les drivers.
+Nous avons ensuite mis à jour les documents avec le nouveau fichier de Thomas Le Mézo puis nous avons créé un fichier launch pour lancer les drivers.
 Nous avons ensuite commencé la calibration du magnétomètre en orientant la voiture dans toutes les directions et nous avons créé un ROS Bag pour récupérer les données de la sphère afin de trouver les matrices A et B que nous devons rentrer dans les fichiers configs.
 On avait le Ros Bag mais notre fichier avait un problème dans l'installation de Ros2. L'heure de déjeuner ayant sonné depuis plusieurs minutes, nous avons envoyé l'erreur à Maël et nous sommes partis.
 
@@ -27,7 +27,7 @@ Arne, Main et Matti ont commencé la structure des nodes.
 
 Chacun s'occupait d'un node différent. Arne a commencé à travailler sur le node du filtre Kalman, Main sur le node de mission et Matti sur le node du régulateur.
 
-A la fin de cette séance chacun devait avoir un node qui récupère les bons types de messages et qui publie les bons types de messages (ceux choisit au par avant). On avait plutot bien avancé sur la structure des nodes puisque deux des trois nodes étaient déjà fonctionnels mais sans programme de contrôle ou autre.
+A la fin de cette séance chacun devait avoir un node qui récupère les bons types de messages et qui publie les bons types de messages (ceux choisis auparavant). On avait plutot bien avancé sur la structure des nodes puisque deux des trois nodes étaient déjà fonctionnels mais sans programme de contrôle ou autre.
 
 
 ## Séance 3 - 05/04/2024
