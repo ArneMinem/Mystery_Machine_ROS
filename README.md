@@ -80,10 +80,3 @@ See [gpsd client](./src/gpsd_client/README.md) package
 
 ## IMU node
 See [icm20948 driver](./src/icm20948_driver) package
-
-
-# Lien utile
-
-## Overleaf, fichier Latex pour le rendu de projet 
-https://fr.overleaf.com/9866661758nfpjsjcrcqnp#e54566
-
