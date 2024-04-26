@@ -79,7 +79,7 @@ See [voiture2a_motors_driver](./src/voiture2a_motors_driver/README.md) package
 See [gpsd client](./src/gpsd_client/README.md) package
 
 ## IMU node
-See [icm20948 driver] (./src/icm20948_driver) package
+See [icm20948 driver](./src/icm20948_driver) package
 
 
 # Lien utile
