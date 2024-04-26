@@ -34,7 +34,7 @@ A la fin de cette séance chacun devait avoir un node qui récupère les bons ty
 Pour cette dernière séance, nous avons gardé les mêmes sous-groupes que la dernière fois.
 
 ### Calibration et acquisition
-Cette séance a été compliquée pour Laura, Léa et Simon. C'est le ventre vide à cause des listeux trop longs pour livrer des crêpes que nous avons essayé de corriger les nombreuses erreurs. Notre code fonctionnait sur l'ordinateur de Maël et nous avons donc essayé tant bien que mal de le faire fonctionner sur le notre.  
+Cette séance a été compliquée pour Laura, Léa et Simon. C'est le ventre vide à cause des listeux trop longs pour livrer des crêpes que nous avons essayé de corriger les nombreuses erreurs. Notre code fonctionnait sur l'ordinateur de Maël et nous avons donc essayé tant bien que mal de le faire fonctionner sur le nôtre.  
 Pour cela, nous avons dû installer plusieurs bibliothèques et modifier nos fichiers launch, cmakelist et config. Nous avons alors (ENFIN) réussi à faire le calibrage et à obtenir nos matrices A et B.  
 
 ![](Photos/Calibration.png)
@@ -50,7 +50,7 @@ Sur cette image, nous voyons en rouge la sphère de points que nous avons obtenu
 ### Structure des nodes
 
 Arne, Main et Matti ont continué la structure des nodes.
-A la fin de cette séance les 3 nodes s'emboitaient bien les uns dans les autres et les messages étaient bien transmis entre les nodes.
+A la fin de cette séance, les 3 nodes s'emboitaient bien les uns dans les autres et les messages étaient bien transmis entre les nodes.
 Nous avons pu vérifier cela sur notre ordinateur mais ayant des problèmes avec la voiture nous n'avons pas pu tester sur la voiture.
 
 
