@@ -51,7 +51,7 @@ Sur cette image, nous voyons en rouge la sphère de points que nous avons obtenu
 
 Arne, Main et Matti ont continué la structure des nodes.
 A la fin de cette séance, les 3 nodes s'emboitaient bien les uns dans les autres et les messages étaient bien transmis entre les nodes.
-Nous avons pu vérifier cela sur notre ordinateur mais ayant des problèmes avec la voiture nous n'avons pas pu tester sur la voiture.
+Nous avons pu vérifier cela sur notre ordinateur mais nous n'avons pas eu le temps de tester sur la voiture.
 
 
 ## Séance supplémentaire - 11/04/2024
