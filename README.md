@@ -7,7 +7,7 @@ Nous avons créé notre groupe pour ce projet. Celui-ci se constitue de Matti So
 ### Structure des nodes
 Tout d'abord, Arne a fini de construire l'étage de la Mystery Machine. Nous nous sommes ensuite rassemblés autour du tableau de la mythique salle E006 afin de créer la structure des nodes. Après de longues minutes de réflexion, nous sommes arrivés au (merveilleux) graphe suivant:
 
-![](Photos/Graphe_J1.jpg)
+![](Photos/Graphe_J1_2.jpg)
 
 ### Essais capteurs / Télécommande / Début du code
 Nous nous sommes ensuite séparés en trois groupes: Simon, Arne et Main ont commencé à tester les drivers des capteurs, Matti et Laura ont connecté la télécommande à la voiture et Léa a établi la connexion avec la RPi4. 
