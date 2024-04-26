@@ -57,9 +57,11 @@ Nous avons pu vérifier cela sur notre ordinateur mais nous n'avons pas eu le te
 ## Séance supplémentaire - 11/04/2024
 
 Le 11 avril, l'équipe s'est réunie une dernière fois pour finaliser le projet.
+
 Tout d'abord, nous nous sommes expliqué ce que chacun avait fait pour que tout le monde soit à jour sur l'ensemble du projet. Nous nous sommes ensuite réparti les tâches que chacun devrait rédiger dans le rapport en nous fixant des dates limites.
+
 Enfin, nous avons essayé de terminer le projet. Nous avons fini de compléter le launch pour lancer en même temps nos trois nodes et les trois nodes des drivers.
-Sur l'ordinateur, nous avons réussi à build sans problème et à lancer le launch mais sur la voiture nous n'avons pas réussi à build. Nous n'avons pas compris à quoi cela était lié mais le build tournait à l'inifni et ne se terminait jamais.
+Sur l'ordinateur, nous avons réussi à build sans problème et à lancer le launch mais sur la voiture nous n'avons pas réussi à build. Nous n'avons pas compris à quoi cela était lié mais le build tournait à l'infini et ne se terminait jamais.
 Le groupe de Titouan, Nicolas etc. n'a pas non plus réussi à compiler tout en même temps sur la voiture. Nous pensons donc que c'est trop lourd et qu'il faudrait passer par un Docker pour compiler. Nous n'avons malheureusement pas eu le temps d'essayer cette solution.
 
 
